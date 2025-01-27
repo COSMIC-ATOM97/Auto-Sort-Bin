@@ -22,11 +22,41 @@ The **AutoSort Bin** is an innovative waste management system that leverages IoT
 4. Connect the hardware components as per the circuit diagram provided in the project report.
 
 ## Usage
-- **Power on the system and ensure all components are connected.
-- **Press the start button to activate the system.
-- **Place waste under the camera to capture an image.
-- **The system will:
-- **Classify the waste using the deep learning model.
-- **Open the corresponding bin lid for disposal.
-- **Display waste type and bin usage statistics on the LCD.
-- **If a bin is full, an alert will be displayed, and the lid will not open.
+- Power on the system and ensure all components are connected.
+- Press the start button to activate the system.
+- Place waste under the camera to capture an image.
+- The system will:
+- Classify the waste using the deep learning model.
+- Open the corresponding bin lid for disposal.
+- Display waste type and bin usage statistics on the LCD.
+- If a bin is full, an alert will be displayed, and the lid will not open.
+
+## Components
+# Hardware
+- Microcontroller: ESP32
+- Input Devices:
+- Camera (Webcam)
+- Ultrasonic Distance Sensors (HC-SR04)
+# Output Devices:
+- 16x2 LCD (I2C interface)
+- Servo Motors
+# Software
+- TensorFlow, Keras: Deep learning framework
+- ThingSpeak: Cloud integration for data monitoring
+- Wokwi: ESP32 circuit simulator
+- Python Libraries: NumPy, Pillow, OpenCV, Matplotlib
+
+## Experimental Results
+- Training Accuracy: 86.56%
+- Testing Accuracy: 85.68%
+- Validation Accuracy: 84.83%
+- Precision: 87%
+- Recall: 80%
+- F1 Score: 83%
+## Future Improvements
+- Integration of more accurate and stable deep learning models.
+- Implementation of GSM modules for notifications.
+- Use of advanced sensors (e.g., moisture, infrared) for error minimization.
+- Solar-powered systems and additional features like odor control and UV sterilization.
+- Contributing
+# Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
