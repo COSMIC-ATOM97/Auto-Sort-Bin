@@ -1,62 +1,93 @@
-# AutoSort Bin
+# AutoSortBin: CPS-IoT Enabled Smart Waste Management System
 
-## Description
-The **AutoSort Bin** is an innovative waste management system that leverages IoT technology and deep learning to automate the segregation of waste into five categories: metal, paper, plastic, glass, and trash. This project aims to improve waste management by identifying waste types using a deep learning model, controlling bin lids with servo motors, and monitoring bin levels with ultrasonic sensors. The system promotes environmental sustainability and is scalable for various applications.
+AutoSortBin is an intelligent waste segregation system that integrates Cyber-Physical Systems (CPS), Internet of Things (IoT), and AI. It uses a fine-tuned DenseNet-121 deep learning model for real-time classification of waste into six categories—Paper, Plastic, Glass, Metal, Organic, and E-Waste—and automates the sorting process via an ESP32-based hardware setup. The system supports real-time monitoring, actuation, and alerting, with cloud connectivity through ThingSpeak.
 
-## Features
-- **AI-Powered Waste Segregation**: Utilizes a Convolutional Neural Network (CNN) to classify waste based on images.
-- **Bin Full Detection**: Ultrasonic sensors detect when a bin is full and display a message on the LCD.
-- **Real-Time Updates**: ThingSpeak cloud integration allows data aggregation and monitoring.
-- **Wide Categorization**: Classifies waste into five categories: paper, glass, metal, plastic, and trash.
-- **Automation**: Servo motors open and close the bin lids based on waste type.
+---
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/AutoSort-Bin.git
+## 📌 Key Features
 
-2. Install necessary dependencies:
-   ```bash
-   pip install tensorflow keras numpy matplotlib pillow opencv-python
-3. Set up the ThingSpeak API key in the script for cloud integration.
-4. Connect the hardware components as per the circuit diagram provided in the project report.
+- 🔍 AI-powered classification using DenseNet-121 with 94.63% validation accuracy  
+- 🤖 Automated bin sorting via servo motors controlled by ESP32  
+- 📡 Real-time bin monitoring using ultrasonic sensors (HC-SR04)  
+- 💬 LCD display for live system feedback  
+- 🌐 Cloud integration via ThingSpeak for command and telemetry  
+- 📧 Automatic email alerts triggered when bins are full  
 
-## Usage
-- Power on the system and ensure all components are connected.
-- Press the start button to activate the system.
-- Place waste under the camera to capture an image.
-- The system will:
-- Classify the waste using the deep learning model.
-- Open the corresponding bin lid for disposal.
-- Display waste type and bin usage statistics on the LCD.
-- If a bin is full, an alert will be displayed, and the lid will not open.
+---
 
-## Components
-# Hardware
-- Microcontroller: ESP32
-- Input Devices:
-- Camera (Webcam)
-- Ultrasonic Distance Sensors (HC-SR04)
-# Output Devices:
-- 16x2 LCD (I2C interface)
-- Servo Motors
-# Software
-- TensorFlow, Keras: Deep learning framework
-- ThingSpeak: Cloud integration for data monitoring
-- Wokwi: ESP32 circuit simulator
-- Python Libraries: NumPy, Pillow, OpenCV, Matplotlib
+## 📐 System Architecture
 
-## Experimental Results
-- Training Accuracy: 86.56%
-- Testing Accuracy: 85.68%
-- Validation Accuracy: 84.83%
-- Precision: 87%
-- Recall: 80%
-- F1 Score: 83%
-## Future Improvements
-- Integration of more accurate and stable deep learning models.
-- Implementation of GSM modules for notifications.
-- Use of advanced sensors (e.g., moisture, infrared) for error minimization.
-- Solar-powered systems and additional features like odor control and UV sterilization.
-- Contributing
-# Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+
+![System Architecture](docs/architecture.jpg)
+
+
+---
+
+## 🧠 Tech Stack
+
+| Layer         | Technology Used                                     |
+|---------------|------------------------------------------------------|
+| AI Inference  | DenseNet-121 (Keras + TensorFlow)                   |
+| Dataset       | Custom + Kaggle (TrashNet, Garbage Classification)  |
+| Cloud Comm    | ThingSpeak (REST API + Webhooks)                    |
+| MCU           | ESP32 (Wokwi simulation)                            |
+| Hardware      | HC-SR04 Sensors, Servo Motors, 16x2 LCD             |
+| Simulation    | Wokwi IoT Simulator                                 |
+| Languages     | Python (AI), C++ (ESP32 Firmware)                   |
+
+---
+
+## 📊 Model Performance
+
+| Metric      | Training | Testing | Validation |
+|-------------|----------|---------|------------|
+| Accuracy    | 94.68%   | 94.72%  | 94.63%     |
+| Precision   | 95.80%   | 95.50%  | 95.20%     |
+| Recall      | 93.90%   | 94.00%  | 93.70%     |
+| F1 Score    | 94.85%   | 94.74%  | 94.44%     |
+
+> DenseNet-121 outperformed ResNet-50 and VGG-16 in both accuracy and efficiency on this task.
+
+---
+
+## 🛠 Setup Instructions
+
+1. Clone the repository.  
+2. Set up a Python virtual environment.  
+3. Train or load the pre-trained DenseNet-121 model.  
+4. Create a ThingSpeak channel with appropriate read/write API keys.  
+5. Upload ESP32 firmware via Arduino IDE or test in Wokwi.  
+6. Run real-time waste classification with image input or webcam.  
+7. Monitor bin status, servo response, and email alert triggering.  
+
+---
+
+## 📦 Dataset Overview
+
+- Sources: TrashNet (Kaggle), Garbage Classification (Kaggle), custom data  
+- Classes: Paper, Plastic, Glass, Metal, Organic, E-Waste  
+- Preprocessing: Resize (224x224), normalize to [0,1], Gaussian Blur, augmentation (flip, rotate, zoom)  
+- Format: One-hot encoded labels, split: 70% train / 15% test / 15% validation  
+
+---
+
+## 🚀 Future Enhancements
+
+- Local inference on edge devices (Jetson Nano / Raspberry Pi)  
+- Replace ThingSpeak with AWS IoT Core or Azure IoT Hub  
+- Add a central web dashboard and admin panel  
+- Extend to multi-label waste types (e.g. composite or hazardous waste)  
+- Upgrade distance sensors to LIDAR for outdoor use  
+
+---
+
+## 👤 Maintainer
+
+- [@COSMIC_ATOM](https://github.com/forhimankgupta)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
